@@ -1,4 +1,4 @@
-# Android SVG viewer.
+# Android SVG viewer
 
 Uses native webview for SVG rendering.
 
