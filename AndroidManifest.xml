@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="biz.codefuture.svgviewer"
+    android:installLocation="preferExternal"
     android:versionCode="2"
-    android:versionName="1.1" android:installLocation="preferExternal">
+    android:versionName="1.1" >
 
     <uses-sdk
         android:minSdkVersion="12"
@@ -22,13 +23,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
             <intent-filter>
-			    <action android:name="android.intent.action.VIEW" />
-			    <category android:name="android.intent.category.DEFAULT" />
-			    <data android:scheme="file" />
-			    <data android:host="*" />
-			    <data android:mimeType="image/svg+xml" />
-			    <data android:pathPattern=".*\\.svg" />
-		  </intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+
+                <data android:scheme="file" />
+                <data android:host="*" />
+                <data android:mimeType="image/svg+xml" />
+                <data android:pathPattern=".*\\.svg" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="biz.codefuture.svgviewer.SettingsActivity"
+            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 
