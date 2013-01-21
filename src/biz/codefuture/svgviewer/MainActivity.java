@@ -6,11 +6,11 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.webkit.WebView;
-import android.util.Log;
+//import android.util.Log;
 
 public class MainActivity extends Activity {
 	
-	private static final String TAG = "SVGViewerActivity";
+//	private static final String TAG = "SVGViewerActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +19,14 @@ public class MainActivity extends Activity {
 		
 		Intent intent = getIntent();
 	    Uri data = intent.getData();
-	    Log.v(TAG, "data=" + data);
+	    //Log.v(TAG, "data=" + data);
 
 	    if (data != null && data.toString().indexOf("file") > -1) {	
 	    	WebView webview = (WebView) findViewById(R.id.webView1);
 	    	webview.loadUrl(data.toString());
-	    	webview.zoomOut();
+	    	webview.getSettings().setBuiltInZoomControls(true);
+	    	webview.getSettings().setDisplayZoomControls(false);
+	    	//webview.zoomOut();
 	    }
 	}
 
