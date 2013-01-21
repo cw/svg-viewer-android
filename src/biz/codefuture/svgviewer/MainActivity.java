@@ -26,6 +26,7 @@ public class MainActivity extends Activity {
 	    	webview.loadUrl(data.toString());
 	    	webview.getSettings().setBuiltInZoomControls(true);
 	    	webview.getSettings().setDisplayZoomControls(false);
+	    	webview.getSettings().setUseWideViewPort(true);
 	    	//webview.zoomOut();
 	    }
 	}
