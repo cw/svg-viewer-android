@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
 	    if (data != null && data.toString().indexOf("file") > -1) {	
 	    	WebView webview = (WebView) findViewById(R.id.webView1);
 	    	webview.loadUrl(data.toString());
+	    	webview.zoomOut();
 	    }
 	}
 
