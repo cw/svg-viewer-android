@@ -4,6 +4,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.WindowManager;
@@ -54,11 +55,12 @@ public class MainActivity extends Activity {
 	
 	private void toggleFullscreen(boolean fullscreen)
 	{
-	    WindowManager.LayoutParams attrs = getWindow().getAttributes();
+	    Log.v("svg viewer", "about to toggle fullscreen");
+    	WindowManager.LayoutParams attrs = getWindow().getAttributes(); 
 	    if (fullscreen) {
-	        attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+			attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN; 
 	    } else {
-	        attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+			attrs.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN); 
 	    }
 	    getWindow().setAttributes(attrs);
 	}
