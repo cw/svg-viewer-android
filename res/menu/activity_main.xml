@@ -4,11 +4,11 @@
        android:icon="@drawable/ic_menu_zoom_fit"
        android:title="@string/menu_zoom_fit"
        android:showAsAction="ifRoom|withText" />
-    
+    <!--
     <item
         android:id="@+id/menu_settings"
         android:orderInCategory="100"
         android:showAsAction="never"
         android:title="@string/menu_settings"/>
-
+  -->
 </menu>
