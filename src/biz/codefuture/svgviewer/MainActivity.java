@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.WindowManager;
 import android.webkit.WebView;
 //import android.util.Log;
 
@@ -36,5 +38,28 @@ public class MainActivity extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle item selection
+	    switch (item.getItemId()) {
+	    case R.id.menu_zoom_fit:
+	        toggleFullscreen(true);
+	        return true;
+	    default:
+	        return super.onOptionsItemSelected(item);
+	    }
+	}
+	
+	private void toggleFullscreen(boolean fullscreen)
+	{
+	    WindowManager.LayoutParams attrs = getWindow().getAttributes();
+	    if (fullscreen) {
+	        attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN;
+	    } else {
+	        attrs.flags &= ~WindowManager.LayoutParams.FLAG_FULLSCREEN;
+	    }
+	    getWindow().setAttributes(attrs);
 	}
 }
