@@ -57,6 +57,17 @@ public class MainActivity extends Activity {
         return super.onOptionsItemSelected(item);
 	}
 	
+	@Override
+	public void onBackPressed() {
+	    Log.v("svg viewer", "onBackPressed");
+		if (mIsFullscreen) {
+			toggleFullscreen();
+		} else {
+			super.onBackPressed();
+			// TODO think about implementing 'press back again to exit' here
+		}
+	}
+	
 	private void toggleFullscreen()
 	{
 	    Log.v("svg viewer", "about to toggle fullscreen");
@@ -67,13 +78,13 @@ public class MainActivity extends Activity {
 		  actionBar.hide();
 	      Log.v("svg viewer", "set fullscreen");
 	      mIsFullscreen = true;
-	      Toast.makeText(getApplicationContext(), "Tap image to disable fullscreen", Toast.LENGTH_SHORT).show();
+	      Toast.makeText(getApplicationContext(), "Back to disable fullscreen", Toast.LENGTH_SHORT).show();
 	    } else {
 	      getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		  actionBar.show();
 		  Log.v("svg viewer", "remove fullscreen");
-	      mIsFullscreen = true;
+	      mIsFullscreen = false;
 	    }
 	}
 	
