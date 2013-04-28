@@ -11,11 +11,12 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 import android.webkit.WebView;
 //import android.util.Log;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 	
 //	private static final String TAG = "SVGViewerActivity";
-	boolean mIsFullscreen = false;
+	private boolean mIsFullscreen = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -52,24 +53,24 @@ public class MainActivity extends Activity {
 	        toggleFullscreen();
 	        return true;
 	    }
+        Log.v("svg viewer", "selected menu item about to return super");
         return super.onOptionsItemSelected(item);
 	}
 	
 	private void toggleFullscreen()
 	{
 	    Log.v("svg viewer", "about to toggle fullscreen");
-	    
+		ActionBar actionBar = getActionBar();
 		if (!mIsFullscreen) {
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		  getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-		  ActionBar actionBar = getActionBar();
 		  actionBar.hide();
 	      Log.v("svg viewer", "set fullscreen");
 	      mIsFullscreen = true;
+	      Toast.makeText(getApplicationContext(), "Tap image to disable fullscreen", Toast.LENGTH_SHORT).show();
 	    } else {
 	      getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		  ActionBar actionBar = getActionBar();
 		  actionBar.show();
 		  Log.v("svg viewer", "remove fullscreen");
 	      mIsFullscreen = true;
