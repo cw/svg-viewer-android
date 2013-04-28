@@ -2,6 +2,7 @@ package biz.codefuture.svgviewer;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
@@ -14,6 +15,7 @@ import android.webkit.WebView;
 public class MainActivity extends Activity {
 	
 //	private static final String TAG = "SVGViewerActivity";
+	boolean mIsFullscreen = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class MainActivity extends Activity {
 	    	webview.getSettings().setUseWideViewPort(true);
 	    	//webview.zoomOut();
 	    }
+	    
 	}
 
 	@Override
@@ -46,22 +49,31 @@ public class MainActivity extends Activity {
 	    // Handle item selection
 	    switch (item.getItemId()) {
 	    case R.id.menu_zoom_fit:
-	        toggleFullscreen(true);
+	        toggleFullscreen();
 	        return true;
-	    default:
-	        return super.onOptionsItemSelected(item);
+	    }
+        return super.onOptionsItemSelected(item);
+	}
+	
+	private void toggleFullscreen()
+	{
+	    Log.v("svg viewer", "about to toggle fullscreen");
+	    
+		if (!mIsFullscreen) {
+		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		  getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+		  ActionBar actionBar = getActionBar();
+		  actionBar.hide();
+	      Log.v("svg viewer", "set fullscreen");
+	      mIsFullscreen = true;
+	    } else {
+	      getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		  ActionBar actionBar = getActionBar();
+		  actionBar.show();
+		  Log.v("svg viewer", "remove fullscreen");
+	      mIsFullscreen = true;
 	    }
 	}
 	
-	private void toggleFullscreen(boolean fullscreen)
-	{
-	    Log.v("svg viewer", "about to toggle fullscreen");
-    	WindowManager.LayoutParams attrs = getWindow().getAttributes(); 
-	    if (fullscreen) {
-			attrs.flags |= WindowManager.LayoutParams.FLAG_FULLSCREEN; 
-	    } else {
-			attrs.flags &= (~WindowManager.LayoutParams.FLAG_FULLSCREEN); 
-	    }
-	    getWindow().setAttributes(attrs);
-	}
 }
