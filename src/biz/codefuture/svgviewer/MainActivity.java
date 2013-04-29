@@ -20,6 +20,7 @@ public class MainActivity extends Activity {
 	
 //	private static final String TAG = "SVGViewerActivity";
 	private boolean mIsFullscreen = false;
+	final static boolean IsDebugging = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,25 +57,32 @@ public class MainActivity extends Activity {
 	        toggleFullscreen();
 	        return true;
 	    }
-        Log.v("svg viewer", "selected menu item about to return super");
+	    if(IsDebugging)
+	        Log.v("svg viewer", "selected menu item about to return super");
         return super.onOptionsItemSelected(item);
 	}
 	
 	@Override
 	public void onBackPressed() {
-	    Log.v("svg viewer", "onBackPressed");
+	    if(IsDebugging)
+		    Log.v("svg viewer", "onBackPressed");
 		if (mIsFullscreen) {
 			toggleFullscreen();
 		} else {
-			super.onBackPressed();
+			//super.onBackPressed();
 			// TODO think about implementing 'press back again to exit' here
+			Intent intent = new Intent(Intent.ACTION_MAIN);
+			intent.addCategory(Intent.CATEGORY_HOME);
+			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			startActivity(intent);
 		}
 	}
 	
 	@SuppressLint("InlinedApi")
 	private void toggleFullscreen()
 	{
-	    Log.v("svg viewer", "about to toggle fullscreen");
+		if(IsDebugging)
+		    Log.v("svg viewer", "about to toggle fullscreen");
 		ActionBar actionBar = getActionBar();
 		if (!mIsFullscreen) {
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -83,7 +91,8 @@ public class MainActivity extends Activity {
 			  getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 		  }
 		  actionBar.hide();
-	      Log.v("svg viewer", "set fullscreen");
+		  if(IsDebugging)
+		      Log.v("svg viewer", "set fullscreen");
 	      mIsFullscreen = true;
 	      Toast.makeText(getApplicationContext(), "Back to disable fullscreen", Toast.LENGTH_SHORT).show();
 	    } else {
@@ -93,7 +102,8 @@ public class MainActivity extends Activity {
 		      getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
 		  }
 		  actionBar.show();
-		  Log.v("svg viewer", "remove fullscreen");
+		  if(IsDebugging)
+			  Log.v("svg viewer", "remove fullscreen");
 	      mIsFullscreen = false;
 	    }
 	}
