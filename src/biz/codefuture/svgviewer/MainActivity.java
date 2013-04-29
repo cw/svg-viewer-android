@@ -1,13 +1,16 @@
 package biz.codefuture.svgviewer;
 
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.annotation.SuppressLint;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 import android.webkit.WebView;
 //import android.util.Log;
@@ -68,6 +71,7 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	@SuppressLint("InlinedApi")
 	private void toggleFullscreen()
 	{
 	    Log.v("svg viewer", "about to toggle fullscreen");
@@ -75,6 +79,9 @@ public class MainActivity extends Activity {
 		if (!mIsFullscreen) {
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		  getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
+		  if(Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH){
+			  getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
+		  }
 		  actionBar.hide();
 	      Log.v("svg viewer", "set fullscreen");
 	      mIsFullscreen = true;
@@ -82,6 +89,9 @@ public class MainActivity extends Activity {
 	    } else {
 	      getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+		  if(Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH){
+		      getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_HIDE_NAVIGATION);
+		  }
 		  actionBar.show();
 		  Log.v("svg viewer", "remove fullscreen");
 	      mIsFullscreen = false;
