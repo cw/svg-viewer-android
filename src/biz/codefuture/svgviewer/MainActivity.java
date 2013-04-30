@@ -87,14 +87,14 @@ public class MainActivity extends Activity {
 		if (!mIsFullscreen) {
 		  getWindow().addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
 		  getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
-		  if(Build.VERSION.SDK_INT > Build.VERSION_CODES.ICE_CREAM_SANDWICH){
+		  if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH){
 			  getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LOW_PROFILE);
 		  }
 		  actionBar.hide();
 		  if(IsDebugging)
 		      Log.v("svg viewer", "set fullscreen");
 	      mIsFullscreen = true;
-	      Toast.makeText(getApplicationContext(), "Back to disable fullscreen", Toast.LENGTH_SHORT).show();
+	      Toast.makeText(getApplicationContext(), R.string.disable_fullscreen_toast, Toast.LENGTH_SHORT).show();
 	    } else {
 	      getWindow().addFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
 	      getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
