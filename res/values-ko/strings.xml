@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="disable_fullscreen_toast">전체 화면 해제로 돌아 가기</string>
+</resources>
