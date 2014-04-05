@@ -69,12 +69,14 @@ public class MainActivity extends Activity {
 		if (mIsFullscreen) {
 			toggleFullscreen();
 		} else {
-			//super.onBackPressed();
+			super.onBackPressed();
+			/*
 			// TODO think about implementing 'press back again to exit' here
 			Intent intent = new Intent(Intent.ACTION_MAIN);
 			intent.addCategory(Intent.CATEGORY_HOME);
 			intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			startActivity(intent);
+			*/
 		}
 	}
 	
