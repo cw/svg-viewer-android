@@ -45,6 +45,8 @@ android {
     }
 
     signingConfigs {
+        // ~/.gradle/gradle.properties should exist with the
+        // following constant values.
         debug {
             storeFile new File(DEBUG_STORE_FILE)
         }
