@@ -10,6 +10,7 @@
         android:targetSdkVersion="19" />
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
@@ -34,10 +35,6 @@
                 <data android:mimeType="image/svg+xml" />
                 <data android:pathPattern=".*\\.svg" />
             </intent-filter>
-        </activity>
-        <activity
-            android:name="biz.codefuture.svgviewer.SettingsActivity"
-            android:label="@string/title_activity_settings" >
         </activity>
     </application>
 
