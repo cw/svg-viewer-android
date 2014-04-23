@@ -4,6 +4,7 @@ buildscript {
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:0.9.+'
+        classpath 'org.notlocalhost.gradle:gradle-calabash-android-plugin:0.1.+'
     }
 }
 apply plugin: 'android'
@@ -11,7 +12,7 @@ apply plugin: 'calabash-test'
 
 dependencies {
     compile fileTree(dir: 'libs', include: '*.jar')
-    classpath 'org.notlocalhost.gradle:gradle-calabash-android-plugin:0.1.+'
+
 }
 
 android {
