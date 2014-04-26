@@ -10,6 +10,9 @@
 # Java class files
 *.class
 
+# Vim swap files
+*.swp
+
 # generated files
 bin/
 gen/
