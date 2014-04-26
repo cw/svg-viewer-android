@@ -1,5 +1,6 @@
-Feature: Login feature
+Feature: Home
 
-  Scenario: As a valid user I can log into my app
-    When I press "Login"
+  Scenario: Home page
+    Given I am on the Home screen
+    When I touch Fullscreen
     Then I see "Welcome to coolest app ever"
