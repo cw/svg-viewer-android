@@ -1,6 +1,6 @@
 # Android SVG viewer
 
-Uses native webview for rendering SVG.
+Uses [native webview](http://developer.android.com/reference/android/webkit/WebView.html) for rendering SVG.
 
 Adds an intent filter so you can open SVG files from a file manager application
 such as [CMFileManager](https://github.com/jruesga/CMFileManager).
