@@ -9,4 +9,4 @@ This application uses the official [W3C SVG logo](http://www.w3.org/2009/08/svg-
 
 If you don't want to build it yourself, you can install this application via
 the [Google Play
-store](https://play.google.com/store/apps/details?id=biz.codefuture.svgviewer).
+store](https://play.google.com/store/apps/details?id=biz.codefuture.svgviewer) or [F-Droid](https://f-droid.org/repository/browse/?fdid=biz.codefuture.svgviewer).
